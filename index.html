@@ -48,7 +48,10 @@
           alert("Please enter your username.");
           return;
         }
-        const offerwallURL = `https://www.pubscale.com/?app_id=85404439&user_id=${encodeURIComponent(userId)}`;
+
+        // ✅ This is the correct PubScale task page link
+        const offerwallURL = `https://wow.pubscale.com/?app_id=85404439&user_id=${encodeURIComponent(userId)}`;
+
         window.location.href = offerwallURL;
       });
     </script>
