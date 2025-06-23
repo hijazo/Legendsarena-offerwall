@@ -1,25 +1,56 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>LegendsArena Offerwall</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body style="margin:0;padding:0;">
+  <head>
+    <title>Offerwall Access</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: #111;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      #start-button {
+        margin-top: 10px;
+        padding: 10px 20px;
+        font-size: 18px;
+        background: #00e676;
+        border: none;
+        color: black;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      #user-input {
+        padding: 10px;
+        font-size: 18px;
+        width: 80%;
+        max-width: 300px;
+        border-radius: 5px;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Enter Your Username</h2>
+    <input type="text" id="user-input" placeholder="e.g. user_1234" />
+    <button id="start-button">Start</button>
 
-  <script>
-    // Get the user_id from the URL like ?user_id=user_1234
-    const params = new URLSearchParams(window.location.search);
-    const userId = params.get("user_id") || "default_user";
-
-    // Create iframe
-    const iframe = document.createElement("iframe");
-    iframe.src = `https://wow.pubscale.com/?app_id=85404439&user_id=${userId}`;
-    iframe.style = "border:none;position:fixed;top:0;left:0;bottom:0;right:0;";
-    iframe.width = "100%";
-    iframe.height = "100%";
-
-    document.body.appendChild(iframe);
-  </script>
-
-</body>
+    <script>
+      document.getElementById("start-button").addEventListener("click", () => {
+        const userId = document.getElementById("user-input").value.trim();
+        if (!userId) {
+          alert("Please enter your username.");
+          return;
+        }
+        const offerwallURL = `https://www.pubscale.com/?app_id=85404439&user_id=${encodeURIComponent(userId)}`;
+        window.location.href = offerwallURL;
+      });
+    </script>
+  </body>
 </html>
